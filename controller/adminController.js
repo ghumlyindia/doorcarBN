@@ -56,7 +56,7 @@ exports.getDashboardStats = async (req, res) => {
             .select('user createdAt status totalPrice');
 
         // 4. Revenue Chart (Dynamic Grouping)
-        // Determine grouping: by Day if range <= 31 days, else by Month
+        // Determine grouping: by Day if range <= 31 days, else by Months
         const daysDiff = (end - start) / (1000 * 60 * 60 * 24);
         const groupBy = daysDiff <= 31 ? 'day' : 'month';
 
