@@ -1,0 +1,82 @@
+1. Fetching a car...
+Using Car: Maruti Swift (ID: 698ddec8d086793d5ef720f3)
+Base Price Per Day (200km Tier): 2000
+
+2. Testing calculatePrice with 3 Days + 9 Hours...
+
+--- Pricing Calculation Result ---
+{
+  "carId": "698ddec8d086793d5ef720f3",
+  "carName": "Maruti Swift",
+  "startDate": "2026-02-13T10:00:00.000Z",
+  "endDate": "2026-02-16T19:00:00.000Z",
+  "duration": {
+    "days": 3,
+    "hours": "9.0",
+    "totalHours": "81.0",
+    "text": "3 Days 9 Hours"
+  },
+  "pricingTiers": [
+    {
+      "id": "tier_200",
+      "name": "200 Kms/Day",
+      "includedKm": 675,
+      "price": 6750,
+      "extraKmCharge": 10,
+      "securityDeposit": 2000,
+      "finalPrice": 7088,
+      "recommended": false
+    },
+    {
+      "id": "tier_400",
+      "name": "400 Kms/Day",
+      "includedKm": 1350,
+      "price": 10125,
+      "extraKmCharge": 10,
+      "securityDeposit": 2000,
+      "finalPrice": 10631,
+      "recommended": true
+    },
+    {
+      "id": "tier_1000",
+      "name": "1000 Kms/Day",
+      "includedKm": 3375,
+      "price": 15188,
+      "extraKmCharge": 10,
+      "securityDeposit": 2000,
+      "finalPrice": 15947,
+      "recommended": false
+    }
+  ]
+}
+
+3. Testing getAllCars with Date Range...
+
+--- List View Pricing Injection ---
+{
+  "duration": {
+    "days": 3,
+    "hours": "9.0",
+    "totalHours": "81.0"
+  },
+  "tiers": {
+    "limit200": {
+      "price": 6750,
+      "includedKm": 675,
+      "label": "200 Kms/Day",
+      "extraKmCharge": 10
+    },
+    "limit400": {
+      "price": 10125,
+      "includedKm": 1350,
+      "label": "400 Kms/Day",
+      "extraKmCharge": 10
+    },
+    "limit1000": {
+      "price": 15188,
+      "includedKm": 3375,
+      "label": "1000 Kms/Day",
+      "extraKmCharge": 10
+    }
+  }
+}
