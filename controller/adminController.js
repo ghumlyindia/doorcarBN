@@ -28,7 +28,7 @@ exports.getDashboardStats = async (req, res) => {
 
         // 1. Basic Counts (All Time)
         const totalUsers = await User.countDocuments({ role: { $ne: 'admin' } });
-        const totalCars = await Car.countDocuments();
+        const totalCars = await Car.countDocuments({ isActive: true });
 
         // Active Bookings (Current)
         const activeBookings = await Booking.countDocuments({
