@@ -156,18 +156,19 @@ exports.verifyPayment = async (req, res) => {
             $inc: { totalBookings: 1 }
         });
 
-        // 4. Send Confirmation Email
+        // 4. Send Confirmation Email (Non-blocking)
         // Fetch car details for email
         const car = await Car.findById(carId);
 
-        await sendBookingConfirmationEmail(req.user.email, {
+        // Don't await email sending to prevent request timeout
+        sendBookingConfirmationEmail(req.user.email, {
             bookingId: booking._id,
             carName: `${car.brand} ${car.model}`,
             startDate,
             endDate,
             totalPrice,
             city: car.city
-        });
+        }).catch(err => console.error("Create Booking Email Error (Background):", err));
 
         res.status(200).json({
             success: true,
